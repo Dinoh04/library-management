@@ -19,7 +19,7 @@ The API documentation is available in the `api.yml` file in this repository. You
 To use this API, you can integrate it into your application or service. You can make requests to the provided endpoints based on the OpenAPI specification to perform operations related to books and authors.
 
 ## link
-
+https://petstore.swagger.io/?url=https://raw.githubusercontent.com/Dinoh04/library-management/TD1/docs/api.yml
 
 
 
