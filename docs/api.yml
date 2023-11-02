@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Library API
   version: 1.0.0
-  description: STD22001
+  description: STD22040
 servers:
   - url: https://library.com
 paths:
@@ -91,7 +91,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Author'
    delete:
-      summary: Delete an author by ID
+      summary: Delete an author by name
       operationId: deleteAuthor
       parameters:
         - in: path
