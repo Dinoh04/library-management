@@ -3,7 +3,7 @@
 openapi: 3.0.3
 info:
   title: Library API
-  version: 1.0.0
+  version: 1.3.0
   description: STD22040
 servers:
   - url: https://library.com
@@ -24,7 +24,8 @@ paths:
           required: false
           schema:
             type: string
-       
+        - $ref: '#/components/parameters/QueryPagination'
+        - $ref: '#/components/parameters/PathPagination'
 
         #TODO3: add parameter to filter books by intervals of dates of the releaseDate
         - in: query
@@ -120,6 +121,8 @@ paths:
           schema:
             type: integer
             default: 50
+        - $ref: '#/components/parameters/QueryPagination'
+        - $ref: '#/components/parameters/PathPagination'
       responses:
         200:
           description: The list of authors
@@ -208,6 +211,23 @@ components:
           type: string
         authorId:
           type: string
+  parameters:
+    QueryPagination:
+      in : query
+      name: queryPagination
+      description: Page number for pagination default 1 
+      required: false
+      schema:
+        type: integer
+        default: 1
+    PathPagination:
+      in: query
+      name: pathPagination
+      description: Number of item in page default 50
+      required: false
+      schema:
+        type: integer
+        default: 50
 
 
       
