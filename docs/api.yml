@@ -175,7 +175,7 @@ paths:
                   - type: object
                     properties:
                       body:
-                       $ref: "#/components/schemas/Book"
+                       $ref: "#/components/schemas/Author"
         400:
           description: Bad Request
           content:
@@ -186,7 +186,7 @@ paths:
                   - type: object
                     properties:
                       body:
-                       $ref: "#/components/schemas/Book"
+                       $ref: "#/components/schemas/Author"
         403:
           description: Can't acces with the data
           content:
@@ -197,7 +197,7 @@ paths:
                   - type: object
                     properties:
                       body:
-                       $ref: "#/components/schemas/Book"
+                       $ref: "#/components/schemas/Author"
         500:
           description: Internal Server Error
           content:
@@ -208,7 +208,7 @@ paths:
                   - type: object
                     properties:
                       body:
-                       $ref: "#/components/schemas/Book"
+                       $ref: "#/components/schemas/Author"
     put:
       tags:
        - "Author"
