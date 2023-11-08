@@ -34,59 +34,45 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Book"
-                  properties:
-                  status:
-                    type: object
+                 allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
+                      body:
+                       $ref: "#/components/schemas/Book"
         400:
           description: Bad Request
           content:
             application/json:
               schema:
-                type: array
-                properties:
-                  status:
-                    type: object
+                 allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
+                      body:
+                       $ref: "#/components/schemas/Book"
         403:
           description: Can't acces with the data
           content:
             application/json:
               schema:
-                type: array
-                properties:
-                  status:
-                    type: object
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
+                      body:
+                       $ref: "#/components/schemas/Book"
         500:
           description: Internal Server Error
           content:
             application/json:
               schema:
-                type: array
-                properties:
-                  status:
-                    type: object
+                 allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
+                      body:
+                       $ref: "#/components/schemas/Book"
 
     
 
@@ -119,57 +105,45 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Book"
-                properties:
-                  status:
-                    type: object
+               allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
+                      body:
+                       $ref: "#/components/schemas/Book"
         400:
           description: Bad Request
           content:
             application/json:
               schema:
-                type: array
-                properties:
-                  status:
-                    type: object
+                 allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
+                      body:
+                       $ref: "#/components/schemas/Book"
         403:
           description: Can't acces with the data
           content:
             application/json:
               schema:
-                type: array
-                properties:
-                  status:
-                    type: object
+                 allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
+                      body:
+                       $ref: "#/components/schemas/Book"
         500:
           description: Internal Server Error
           content:
             application/json:
               schema:
-                type: array
-                properties:
-                  status:
-                    type: array
+                 allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
+                      body:
+                       $ref: "#/components/schemas/Book"
 
 
    
