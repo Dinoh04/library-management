@@ -268,15 +268,18 @@ paths:
    post:
     tags:
       - "Books"
-    summary: Import books from JSON file
-    operationId: importBooksFromJson
+    summary: Import books from Excel file
+    operationId: importBooks
     requestBody:
       content:
-        application/json:
+        multipart/form-data:
           schema:
-            type: array
-            items:
-              $ref: "#/components/schemas/Book"
+            type: object
+            properties:
+              excelFile:
+                type: string
+                format: binary
+  
     responses:
       200:
         description: List of imported books
@@ -288,7 +291,35 @@ paths:
                   - type: object
                     properties:
                       body:
-                       $ref: "#/components/schemas/Book"
+                        $ref: "#/components/schemas/Book"
+  /books/import/:
+   post:
+    tags:
+      - "Books"
+    summary: Import books from JSON file
+    operationId: importBooks
+    requestBody:
+      content:
+          application/json:
+            schema:
+             type: array
+             items:
+              $ref: "#/components/schemas/Book"
+  
+    responses:
+      200:
+        description: List of imported books
+        content:
+          application/json:
+            schema:
+              allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
+                    properties:
+                      body:
+                        $ref: "#/components/schemas/Book"
+                    
+   
 
    delete:
       tags:
@@ -332,6 +363,34 @@ paths:
    post:
     tags:
       - "Author"
+    summary: Import authors from Excel file
+    operationId: importAuthors
+    requestBody:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              excelFile:
+                type: string
+                format: binary
+    responses:
+      200:
+        description: List of imported authors
+        content:
+          application/json:
+            schema:
+                 allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
+                    properties:
+                      body:
+                       $ref: "#/components/schemas/Author"
+    
+  /authors/import/:
+   post:
+    tags:
+      - "Author"
     summary: Import authors from JSON file
     operationId: importAuthorsFromJson
     requestBody:
@@ -347,12 +406,9 @@ paths:
         content:
           application/json:
             schema:
-                 allOf:
-                  - $ref: "#/components/responses/CommonResponse"
-                  - type: object
-                    properties:
-                      body:
-                       $ref: "#/components/schemas/Author"
+              type: array
+              items:
+                $ref: "#/components/schemas/Author"
 components:
   schemas:
     Book:
@@ -360,6 +416,14 @@ components:
 
       allOf:
         - $ref: "#/components/schemas/CrupdateBook"
+        - type: object
+      properties:
+          file_type:
+              enum:
+                - JSON
+                - Excel
+
+            
     Author:
       type: object
       properties:
@@ -399,6 +463,13 @@ components:
         bookId:
           type: string
         authorId:
+          type: string
+    ImportAuthor:
+      type: object
+      properties:
+        authorName:
+          type: string
+        sex:
           type: string
   parameters:
     QueryPagination:
