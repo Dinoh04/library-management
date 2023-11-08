@@ -359,13 +359,16 @@ paths:
                     properties:
                       body:
                        $ref: "#/components/schemas/Author"
+
+    
   /authors/import:
    post:
     tags:
       - "Author"
-    summary: Import authors from Excel file
+    summary: Import authors
     operationId: importAuthors
     requestBody:
+      required: true
       content:
         multipart/form-data:
           schema:
@@ -374,32 +377,9 @@ paths:
               excelFile:
                 type: string
                 format: binary
-    responses:
-      200:
-        description: List of imported authors
-        content:
-          application/json:
-            schema:
-                 allOf:
-                  - $ref: "#/components/responses/CommonResponse"
-                  - type: object
-                    properties:
-                      body:
-                       $ref: "#/components/schemas/Author"
-    
-  /authors/import/:
-   post:
-    tags:
-      - "Author"
-    summary: Import authors from JSON file
-    operationId: importAuthorsFromJson
-    requestBody:
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: "#/components/schemas/Author"
+              jsonFile:
+                type: string
+                format: binary
     responses:
       200:
         description: List of imported authors
@@ -409,6 +389,8 @@ paths:
               type: array
               items:
                 $ref: "#/components/schemas/Author"
+   
+
 components:
   schemas:
     Book:
