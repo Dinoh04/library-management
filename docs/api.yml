@@ -406,14 +406,92 @@ paths:
               type: array
               items: 
                 $ref: "#/components/schemas/Visitors"
+  
+  /Borrow/:
       
+
+    post:
+     tags:
+       - "Borrow"
+     summary: Create a new loan
+     operationId: createBorrowing
+     requestBody:
+        content:
+          application/json:
+           schema:
+              $ref: "#/components/schemas/Borrowing"
+     responses:
+       201:
+         description: Loan created  successfully
+         content:
+           application/json:
+               schema:
+                  type: array
+                  $ref: "#/components/schemas/Borrowing"     
+
+    get:
+     tags:
+       - "Borrow"
+     summary:  Get the list of all  visitors
+     responses:
+      200:
+        description: List of loan successfully retrieved
+        content:
+          application/json:
+            schema:
+              type: object
+              items:
+                $ref: '#/components/schemas/Borrowing'
+
+  /borrowings/{borrowingID}:
+   put:
+    tags:
+       - "Borrow"
+    summary: Upadate a loan 
+    parameters:
+      - name: borrowingID
+        in: path
+        required: true
+        description: The id of loan to update
+        schema:
+          type: integer
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              returnDate:
+                type: string
+                format: date
+                description: The book's return date
+    responses:
+      200:
+        description:  Loan update successfully
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Borrowing'
+
+   delete:
+    summary: Delete a loan
+    parameters:
+      - name: borrowingID
+        in: path
+        required: true
+        description: The id of loan to delete
+        schema:
+          type: integer
+    responses:
+      204:
+        description: Loan deleted successfully
 
 
 components:
   schemas:
     Book:
       type: object
-
       allOf:
         - $ref: "#/components/schemas/CrupdateBook"
         - type: object
@@ -474,12 +552,37 @@ components:
     Visitors:
       type: object
       properties:
+        IdVisitor:
+            type: integer
+            description: The id of the visitor or borrower
         IdAuthor:
             type: integer
         name: 
             type: string
         reference:
             type: string
+    Borrowing:
+        type: object
+        properties:
+          borrowingId:
+            type: integer
+            description: The id of the borrow
+          IdVisitor:
+            type: integer
+            description: The id of the visitor or borrower
+          bookId:
+            type: integer
+          borroweddate:
+            type: string
+            format: date
+            description: date of the book borrow
+          returnDate:
+              type: string
+              format: date
+              description: The expected date of return of the book
+
+
+
         
   parameters:
     QueryPagination:
