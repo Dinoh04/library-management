@@ -555,8 +555,6 @@ components:
         IdVisitor:
             type: integer
             description: The id of the visitor or borrower
-        IdAuthor:
-            type: integer
         name: 
             type: string
         reference:
