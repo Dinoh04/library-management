@@ -407,7 +407,35 @@ paths:
               items: 
                 $ref: "#/components/schemas/Visitors"
 
-        
+  /visitors/{visitorID}/borrowings:
+    
+    get: 
+     tags:
+        - "Visitors"
+     summary: Recover loans made by a visitor
+     parameters:
+      - name: visitorID
+        in: path
+        required: true
+        description: Id of the visitor
+        schema:
+          type: integer
+     responses:
+        200:
+         description: List of loans made by the visitor successfully retrieved
+         content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Borrowing'
+
+
+ 
+
+
+   
+    
   /books/borrowed:
    
     get:
@@ -598,6 +626,10 @@ components:
             type: string
         reference:
             type: string
+        borrowings:
+          type: array
+          items:
+            $ref: '#/components/schemas/Borrowing'
     Borrowing:
         type: object
         properties:
