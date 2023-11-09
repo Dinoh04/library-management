@@ -389,7 +389,25 @@ paths:
               type: array
               items:
                 $ref: "#/components/schemas/Author"
-   
+  
+
+  /Visitors/:
+    
+    get: 
+     tags:
+        - "Visitors"
+     summary: Get the list of all  visitors
+     responses:
+       200:
+        description: Visitor successfully retrieved 
+        content:
+            application/json:
+             schema:
+              type: array
+              items: 
+                $ref: "#/components/schemas/Visitors"
+      
+
 
 components:
   schemas:
@@ -453,6 +471,16 @@ components:
           type: string
         sex:
           type: string
+    Visitors:
+      type: object
+      properties:
+        IdAuthor:
+            type: integer
+        name: 
+            type: string
+        reference:
+            type: string
+        
   parameters:
     QueryPagination:
       in : query
