@@ -431,6 +431,48 @@ paths:
                 $ref: '#/components/schemas/Borrowing'
 
 
+  /visitors/{visitorID}/activities:
+
+   get:
+    summary: Retrieve visitor activities during a specified period
+    parameters:
+      - name: visitorID
+        in: path
+        required: true
+        description: The unique identifier of the visitor.
+        schema:
+          type: integer
+      - name: startDate
+        in: query
+        required: true
+        description: Start date of the desired period.
+        schema:
+          type: string
+          format: date
+      - name: endDate
+        in: query
+        required: true
+        description: End date of the desired period.
+        schema:
+          type: string
+          format: date
+    responses:
+      200:
+        description: List of visitor activities during the specified period retrieved successfully
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                borrowings:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Borrowing'
+                returns:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Borrowing'
+
  
 
 
