@@ -406,7 +406,42 @@ paths:
               type: array
               items: 
                 $ref: "#/components/schemas/Visitors"
+
+        
+  /books/borrowed:
+   
+    get:
+      tags:
+       - "Books"
+      summary: Get all the book loaned
+      responses:
+        200:
+         description: Book loaned retrieved successfully
+         content:
+           application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/CrupdateBook"
+
+  /books/available:
   
+     get:
+        tags:
+          - "Books"
+        summary: Get all the book available
+        responses:
+          200:
+           description: List of book available retrieved successfully
+           content:
+             application/json:
+              schema:
+               type: array
+               items:
+                $ref: '#/components/schemas/CrupdateBook'
+
+  
+
   /Borrow/:
       
 
@@ -475,6 +510,8 @@ paths:
               $ref: '#/components/schemas/Borrowing'
 
    delete:
+    tags:
+      - "Borrow"
     summary: Delete a loan
     parameters:
       - name: borrowingID
@@ -534,7 +571,9 @@ components:
         releaseDate:
           type: string
           format: date
-
+        availibility:
+          type: boolean
+          description: Show if the book is "available" or "Borrow"  
     UpdateBookAuthor:
       type: object
       properties:
