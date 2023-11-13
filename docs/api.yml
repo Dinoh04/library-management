@@ -27,49 +27,14 @@ paths:
 
       responses:
         200:
-          description: The list of filtered books
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: "#/components/responses/CommonResponse"
-                  - type: object
-                    properties:
-                      body:
-                        $ref: "#/components/schemas/Book"
+          $ref: '#/components/responses/Booklist_200'
         400:
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: "#/components/responses/CommonResponse"
-                  - type: object
-                    properties:
-                      body:
-                        $ref: "#/components/schemas/Book"
+          $ref : '#/components/responses/400'
         403:
-          description: Can't acces with the data
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: "#/components/responses/CommonResponse"
-                  - type: object
-                    properties:
-                      body:
-                        $ref: "#/components/schemas/Book"
+          $ref : '#/components/responses/403'
         500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: "#/components/responses/CommonResponse"
-                  - type: object
-                    properties:
-                      body:
-                        $ref: "#/components/schemas/Book"
+          $ref: '#/components/responses/500'
+
 
   /books/{bookId}/authors/{authorId}:
     put:
@@ -92,49 +57,14 @@ paths:
             type: string
       responses:
         200:
-          description: Author assigned to the book successfully
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: "#/components/responses/CommonResponse"
-                  - type: object
-                    properties:
-                      body:
-                        $ref: "#/components/schemas/Book"
+          $ref: '#/components/responses/Booklist_200'
         400:
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: "#/components/responses/CommonResponse"
-                  - type: object
-                    properties:
-                      body:
-                        $ref: "#/components/schemas/Book"
+          $ref : '#/components/responses/400'
         403:
-          description: Can't acces with the data
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: "#/components/responses/CommonResponse"
-                  - type: object
-                    properties:
-                      body:
-                        $ref: "#/components/schemas/Book"
+          $ref : '#/components/responses/403'
         500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: "#/components/responses/CommonResponse"
-                  - type: object
-                    properties:
-                      body:
-                        $ref: "#/components/schemas/Book"
+          $ref: '#/components/responses/500'
+
 
   /authors/name:
     #TODO2: complete GET (can be filtered by name) - PUT - DELETE
@@ -154,50 +84,14 @@ paths:
         - $ref: "#/components/parameters/QueryPagination"
         - $ref: "#/components/parameters/PathPagination"
       responses:
-        200:
-          description: The list of authors
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: "#/components/responses/CommonResponse"
-                  - type: object
-                    properties:
-                      body:
-                        $ref: "#/components/schemas/Author"
-        400:
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: "#/components/responses/CommonResponse"
-                  - type: object
-                    properties:
-                      body:
-                        $ref: "#/components/schemas/Author"
-        403:
-          description: Can't acces with the data
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: "#/components/responses/CommonResponse"
-                  - type: object
-                    properties:
-                      body:
-                        $ref: "#/components/schemas/Author"
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: "#/components/responses/CommonResponse"
-                  - type: object
-                    properties:
-                      body:
-                        $ref: "#/components/schemas/Author"
+       200:
+          $ref: '#/components/responses/Authorlist_200'
+       400:
+          $ref : '#/components/responses/400'
+       403:
+          $ref : '#/components/responses/403'
+       500:
+          $ref: '#/components/responses/500'
     put:
       tags:
         - "Author"
@@ -208,51 +102,16 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/Author"
+      
       responses:
-        200:
-          description: The created or updated author
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: "#/components/responses/CommonResponse"
-                  - type: object
-                    properties:
-                      body:
-                        $ref: "#/components/schemas/Author"
-        400:
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: "#/components/responses/CommonResponse"
-                  - type: object
-                    properties:
-                      body:
-                        $ref: "#/components/schemas/Author"
-        403:
-          description: Can't acces with the data
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: "#/components/responses/CommonResponse"
-                  - type: object
-                    properties:
-                      body:
-                        $ref: "#/components/schemas/Author"
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: "#/components/responses/CommonResponse"
-                  - type: object
-                    properties:
-                      body:
-                        $ref: "#/components/schemas/Author"
+       200:
+          $ref: '#/components/responses/Authorlist_200'
+       400:
+          $ref : '#/components/responses/400'
+       403:
+          $ref : '#/components/responses/403'
+       500:
+          $ref: '#/components/responses/500'
   /books/import:
     post:
       tags:
@@ -270,17 +129,14 @@ paths:
                   format: binary
 
       responses:
-        200:
-          description: List of imported books
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: "#/components/responses/CommonResponse"
-                  - type: object
-                    properties:
-                      body:
-                        $ref: "#/components/schemas/Book"
+         200:
+          $ref: '#/components/responses/Booklist_200'
+         400:
+          $ref : '#/components/responses/400'
+         403:
+          $ref : '#/components/responses/403'
+         500:
+          $ref: '#/components/responses/500'
       security:
         - oauth2: [admin]
   /books/import/:
@@ -298,16 +154,7 @@ paths:
                 $ref: "#/components/schemas/Book"
       responses:
         200:
-          description: List of imported books
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: "#/components/responses/CommonResponse"
-                  - type: object
-                    properties:
-                      body:
-                        $ref: "#/components/schemas/Book"
+          $ref: '#/components/responses/Booklist_200'
       security:
         - oauth2: [admin]
     delete:
@@ -325,29 +172,12 @@ paths:
       responses:
         204:
           description: Author deleted successfully
-
         400:
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: "#/components/responses/CommonResponse"
-                  - type: object
-                    properties:
-                      body:
-                        $ref: "#/components/schemas/Author"
+          $ref : '#/components/responses/400'
         500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: "#/components/responses/CommonResponse"
-                  - type: object
-                    properties:
-                      body:
-                        $ref: "#/components/schemas/Author"
+          $ref: '#/components/responses/500'
+
+
       security:
         - oauth2: [admin]
   /authors/import:
@@ -370,14 +200,14 @@ paths:
                   type: string
                   format: binary
       responses:
-        200:
-          description: List of imported authors
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Author"
+         200:
+          $ref: '#/components/responses/Authorlist_200'
+         400:
+          $ref : '#/components/responses/400'
+         403:
+          $ref : '#/components/responses/403'
+         500:
+          $ref: '#/components/responses/500'
       security:
         - oauth2: [admin]
   /Visitors/:
@@ -444,21 +274,15 @@ paths:
             type: string
             format: date
       responses:
-        200:
-          description: List of visitor activities during the specified period retrieved successfully
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  borrowings:
-                    type: array
-                    items:
-                      $ref: "#/components/schemas/Borrowing"
-                  returns:
-                    type: array
-                    items:
-                      $ref: "#/components/schemas/Borrowing"
+         200:
+          $ref: '#/components/responses/Visitorslist_200'
+         400:
+          $ref : '#/components/responses/400'
+         403:
+          $ref : '#/components/responses/403'
+         500:
+          $ref: '#/components/responses/500'
+                     
 
   /books/borrowed:
     get:
@@ -467,13 +291,7 @@ paths:
       summary: Get all the book loaned
       responses:
         200:
-          description: Book loaned retrieved successfully
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/CrupdateBook"
+          $ref: '#/components/responses/Booklist_200'
 
   /books/available:
     get:
@@ -666,6 +484,71 @@ components:
           type: string
           format: date
           description: The expected date of return of the book
+     
+    ResponseStatus:
+        type: object
+        properties:
+          code: 
+            type: integer
+            example: 200
+          message:
+            type: string
+    ResponseBodyTemplate:
+        type: object
+        properties:
+          status:
+            $ref: '#/components/schemas/ResponseStatus'
+          body:
+            type: object
+    BadRequestBody:
+      allOf:
+        - $ref: '#/components/schemas/ResponseBodyTemplate'
+      example:
+        status:
+          code: 400
+          message: BAD REQUEST 
+          body: { }
+    ForbiddenBody:
+      allOf:
+        - $ref: '#/components/schemas/ResponseBodyTemplate'
+      example:
+        status:
+          code: 403
+          message: FORBIDDEN
+          body: { }
+    ErrorServorBody:
+      allOf:
+        - $ref: '#/components/schemas/ResponseBodyTemplate'
+      example:
+        status:
+          code: 500
+          message: Eternal servor error
+    BookListBody:
+      allOf:
+        - $ref: '#/components/schemas/ResponseBodyTemplate'
+        - properties:
+            body:
+             type: array
+             items:
+                $ref: '#/components/schemas/Book'
+    AuthorListBody:
+      allOf:
+        - $ref: '#/components/schemas/ResponseBodyTemplate'
+        - properties:
+            body:
+             type: array
+             items:
+                $ref: '#/components/schemas/Author'
+    VisitorsListBody:
+      allOf:
+        - $ref: '#/components/schemas/ResponseBodyTemplate'
+        - properties:
+            body:
+             type: array
+             items:
+                $ref: '#/components/schemas/Visitors'
+
+
 
   parameters:
     QueryPagination:
@@ -684,24 +567,52 @@ components:
       schema:
         type: integer
         default: 50
+    
 
   responses:
-    CommonResponse:
-      description: joint response
+   Booklist_200:
+     description: List of books
+     content:
+        application/json:
+           schema:
+              $ref : '#/components/schemas/BookListBody'
+   Authorlist_200:
+     description: List of author
+     content:
+        application/json:
+           schema:
+              $ref : '#/components/schemas/AuthorListBody'
+   Visitorslist_200:
+     description: List of author
+     content:
+        application/json:
+           schema:
+              $ref : '#/components/schemas/VisitorsListBody'
+   200:
+       description: successfully
+       content:
+         application/json:
+          schema:
+             $ref: '#/components/responses/200'
+   400:
+       description: Bad request 
+       content:
+        application/json:
+         schema:
+           $ref: '#/components/schemas/BadRequestBody'
+   403:
+       description: FORBIDDEN
+       content:
+         application/json:
+           schema:
+             $ref: '#/components/schemas/ForbiddenBody'
+   500:
+      description: ETERNAL SERVOR ERROR
       content:
         application/json:
           schema:
-            type: array
-            properties:
-              status:
-                type: object
-                properties:
-                  code:
-                    type: integer
-                  message:
-                    type: string
-              body:
-                type: object
+              $ref: '#/components/schemas/ErrorServorBody'
+      
   securitySchemes:
     oauth2:
       type: oauth2
